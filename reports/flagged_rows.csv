@@ -1,0 +1,68 @@
+row_index,csv_line,column,issue,value
+247,249,age,possible outlier (IQR rule),22
+40,42,absences,possible outlier (IQR rule),25
+74,76,absences,possible outlier (IQR rule),54
+103,105,absences,possible outlier (IQR rule),26
+183,185,absences,possible outlier (IQR rule),56
+198,200,absences,possible outlier (IQR rule),24
+205,207,absences,possible outlier (IQR rule),28
+216,218,absences,possible outlier (IQR rule),22
+260,262,absences,possible outlier (IQR rule),21
+276,278,absences,possible outlier (IQR rule),75
+277,279,absences,possible outlier (IQR rule),22
+280,282,absences,possible outlier (IQR rule),30
+307,309,absences,possible outlier (IQR rule),38
+313,315,absences,possible outlier (IQR rule),22
+315,317,absences,possible outlier (IQR rule),40
+320,322,absences,possible outlier (IQR rule),23
+130,132,G2,possible outlier (IQR rule),0
+131,133,G2,possible outlier (IQR rule),0
+134,136,G2,possible outlier (IQR rule),0
+135,137,G2,possible outlier (IQR rule),0
+136,138,G2,possible outlier (IQR rule),0
+137,139,G2,possible outlier (IQR rule),0
+144,146,G2,possible outlier (IQR rule),0
+153,155,G2,possible outlier (IQR rule),0
+162,164,G2,possible outlier (IQR rule),0
+242,244,G2,possible outlier (IQR rule),0
+244,246,G2,possible outlier (IQR rule),0
+269,271,G2,possible outlier (IQR rule),0
+332,334,G2,possible outlier (IQR rule),0
+128,130,G3,final grade is 0 (possible missed exam),0
+130,132,G3,final grade is 0 (possible missed exam),0
+131,133,G3,final grade is 0 (possible missed exam),0
+134,136,G3,final grade is 0 (possible missed exam),0
+135,137,G3,final grade is 0 (possible missed exam),0
+136,138,G3,final grade is 0 (possible missed exam),0
+137,139,G3,final grade is 0 (possible missed exam),0
+140,142,G3,final grade is 0 (possible missed exam),0
+144,146,G3,final grade is 0 (possible missed exam),0
+146,148,G3,final grade is 0 (possible missed exam),0
+148,150,G3,final grade is 0 (possible missed exam),0
+150,152,G3,final grade is 0 (possible missed exam),0
+153,155,G3,final grade is 0 (possible missed exam),0
+160,162,G3,final grade is 0 (possible missed exam),0
+162,164,G3,final grade is 0 (possible missed exam),0
+168,170,G3,final grade is 0 (possible missed exam),0
+170,172,G3,final grade is 0 (possible missed exam),0
+173,175,G3,final grade is 0 (possible missed exam),0
+221,223,G3,final grade is 0 (possible missed exam),0
+239,241,G3,final grade is 0 (possible missed exam),0
+242,244,G3,final grade is 0 (possible missed exam),0
+244,246,G3,final grade is 0 (possible missed exam),0
+259,261,G3,final grade is 0 (possible missed exam),0
+264,266,G3,final grade is 0 (possible missed exam),0
+269,271,G3,final grade is 0 (possible missed exam),0
+296,298,G3,final grade is 0 (possible missed exam),0
+310,312,G3,final grade is 0 (possible missed exam),0
+316,318,G3,final grade is 0 (possible missed exam),0
+332,334,G3,final grade is 0 (possible missed exam),0
+333,335,G3,final grade is 0 (possible missed exam),0
+334,336,G3,final grade is 0 (possible missed exam),0
+337,339,G3,final grade is 0 (possible missed exam),0
+341,343,G3,final grade is 0 (possible missed exam),0
+343,345,G3,final grade is 0 (possible missed exam),0
+367,369,G3,final grade is 0 (possible missed exam),0
+383,385,G3,final grade is 0 (possible missed exam),0
+387,389,G3,final grade is 0 (possible missed exam),0
+389,391,G3,final grade is 0 (possible missed exam),0

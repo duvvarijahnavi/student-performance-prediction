@@ -1,0 +1,15 @@
+filename,description
+01_g3_distribution.png,"Histogram of the final grade G3 with mean, median and pass boundary"
+02_pass_fail_balance.png,Number of students below and above the assumed pass mark
+03_g3_by_studytime.png,Box plot of G3 for each study-time category
+04_absences_vs_g3_scatter.png,Scatter plot of absences against G3 with a straight-line trend
+05_g3_by_absence_group.png,Box plot of G3 for grouped absence counts
+06_g3_by_past_failures.png,Box plot of G3 for each past-failures category
+07_g3_by_sex.png,Box plot of G3 for female and male students
+08_earlier_grades_vs_g3.png,"G1 and G2 against G3, with G3 = 0 students highlighted"
+09_correlation_matrix.png,Pearson correlation heatmap of all numeric columns
+10_correlation_with_g3.png,Ranked Pearson correlation of each numeric column with G3
+11_mean_g3_binary_features.png,Mean G3 for each yes/no or two-category feature
+12_mean_g3_nominal_features.png,Mean G3 for the multi-category text features
+13_mean_g3_ordinal_features.png,Mean G3 for the ordinal (1-5 style) features and age
+14_zero_grade_diagnostic.png,"Comparison of G1, G2 and absences for G3 = 0 students vs the rest"

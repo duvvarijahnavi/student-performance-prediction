@@ -1,0 +1,103 @@
+Rows: 395  |  train: (316, 32)  test: (79, 32)  (DROP_ZERO_GRADES = False)
+Selected models read from best_model_selection.csv: {'A_late_prediction': 'Random Forest', 'B_early_warning': 'Random Forest'}
+
+==============================================================================
+SCENARIO: A_late_prediction
+==============================================================================
+Scenario A (late prediction): G1, G2 and grade_trend are used.
+
+Model selected in Step 10 : Random Forest
+
+Parameter grid (36 combinations x 5 folds = 180 fits):
+  max_depth          [None, 5, 10]
+  min_samples_leaf   [1, 2, 4, 8]
+  max_features       [1.0, 0.5, 'sqrt']
+
+Running GridSearchCV (this can take a while for Random Forest) ...
+
+BEST PARAMETERS FOUND:
+  max_depth = None
+  max_features = 1.0
+  min_samples_leaf = 4
+
+BEST CROSS-VALIDATED SCORE: RMSE = 1.549   MAE = 0.990   R2 = 0.875
+  (This score picked the winner out of many combinations, so it is slightly optimistic.
+   The test set below is the honest check.)
+
+Top 5 combinations by cross-validated RMSE:
+                                                         params  cv_RMSE  cv_RMSE_std  cv_MAE  cv_R2  rank_by_RMSE
+{"max_depth": null, "max_features": 1.0, "min_samples_leaf": 4}    1.549        0.267   0.990  0.875             1
+  {"max_depth": 10, "max_features": 1.0, "min_samples_leaf": 4}    1.549        0.267   0.990  0.875             2
+   {"max_depth": 5, "max_features": 1.0, "min_samples_leaf": 4}    1.556        0.263   0.995  0.874             3
+  {"max_depth": 10, "max_features": 1.0, "min_samples_leaf": 8}    1.576        0.241   1.014  0.872             4
+{"max_depth": null, "max_features": 1.0, "min_samples_leaf": 8}    1.576        0.241   1.014  0.872             5
+All 36 combinations saved -> reports\tuning_grid_A_late_prediction.csv
+
+Consistency check: re-evaluating the tuned model reproduces the grid-search score.  OK
+
+COMPARISON (lower MAE/RMSE is better, higher R2 is better):
+                                 cv_MAE  cv_RMSE  cv_R2  train_RMSE  test_MAE  test_RMSE  test_R2
+stage             model                                                                          
+original selected Random Forest   1.004    1.583  0.868       0.647     1.018      1.578    0.876
+tuned             Random Forest   0.990    1.549  0.875       1.081     1.042      1.624    0.869
+
+Cross-validated RMSE: original 1.583  ->  tuned 1.549   (change +0.034; standard error of the original = 0.129)
+VERDICT (cross-validation): the improvement is NOT larger than one standard error, so tuning gave no clear gain. Keep the SIMPLER original model.
+For information only: test RMSE original 1.578 -> tuned 1.624, test R2 original 0.876 -> tuned 0.869. With a small test set some difference is normal; do NOT re-tune to improve it.
+
+==============================================================================
+SCENARIO: B_early_warning
+==============================================================================
+Scenario B (early warning): G1, G2 and grade_trend are NOT used.
+
+Model selected in Step 10 : Random Forest
+
+Parameter grid (36 combinations x 5 folds = 180 fits):
+  max_depth          [None, 5, 10]
+  min_samples_leaf   [1, 2, 4, 8]
+  max_features       [1.0, 0.5, 'sqrt']
+
+Running GridSearchCV (this can take a while for Random Forest) ...
+
+BEST PARAMETERS FOUND:
+  max_depth = None
+  max_features = 1.0
+  min_samples_leaf = 8
+
+BEST CROSS-VALIDATED SCORE: RMSE = 3.853   MAE = 2.971   R2 = 0.288
+  (This score picked the winner out of many combinations, so it is slightly optimistic.
+   The test set below is the honest check.)
+  NOTE: 'min_samples_leaf' = 8 is at the edge of its grid [1, 2, 4, 8]. A better value may lie outside the grid.
+
+Top 5 combinations by cross-validated RMSE:
+                                                         params  cv_RMSE  cv_RMSE_std  cv_MAE  cv_R2  rank_by_RMSE
+{"max_depth": null, "max_features": 1.0, "min_samples_leaf": 8}    3.853        0.447   2.971  0.288             1
+  {"max_depth": 10, "max_features": 1.0, "min_samples_leaf": 8}    3.853        0.447   2.971  0.288             2
+{"max_depth": null, "max_features": 1.0, "min_samples_leaf": 4}    3.855        0.427   2.961  0.286             3
+{"max_depth": null, "max_features": 0.5, "min_samples_leaf": 2}    3.857        0.410   2.949  0.285             4
+  {"max_depth": 10, "max_features": 1.0, "min_samples_leaf": 4}    3.859        0.430   2.964  0.285             5
+All 36 combinations saved -> reports\tuning_grid_B_early_warning.csv
+
+Consistency check: re-evaluating the tuned model reproduces the grid-search score.  OK
+
+COMPARISON (lower MAE/RMSE is better, higher R2 is better):
+                                 cv_MAE  cv_RMSE  cv_R2  train_RMSE  test_MAE  test_RMSE  test_R2
+stage             model                                                                          
+original selected Random Forest   2.953    3.869  0.281       1.485     2.947      3.823    0.272
+tuned             Random Forest   2.971    3.853  0.288       3.132     2.976      3.942    0.226
+
+Cross-validated RMSE: original 3.869  ->  tuned 3.853   (change +0.015; standard error of the original = 0.172)
+VERDICT (cross-validation): the improvement is NOT larger than one standard error, so tuning gave no clear gain. Keep the SIMPLER original model.
+For information only: test RMSE original 3.823 -> tuned 3.942, test R2 original 0.272 -> tuned 0.226. With a small test set some difference is normal; do NOT re-tune to improve it.
+
+==============================================================================
+FILES SAVED
+==============================================================================
+Comparison table -> reports\tuning_results.csv
+Best parameters  -> reports\tuned_params.json
+Chart            -> reports\figures\models\tuning_comparison.png
+
+Reminders:
+  - The search used ONLY the training set. The test scores above did not influence any choice.
+  - Do not change the grid or the split to improve the test score. That would be leakage.
+  - Next step: final evaluation and saving the model (roadmap Step 8).

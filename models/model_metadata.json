@@ -1,0 +1,296 @@
+{
+  "created_at": "2026-09-22T22:19:33",
+  "scenario": "B_early_warning",
+  "use_prior_grades": false,
+  "model_name": "Random Forest",
+  "settings_source": "starting settings (tuning gave no clear gain, so the simpler original is kept)",
+  "model_params": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "criterion": "squared_error",
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 300,
+    "n_jobs": -1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "target": "G3",
+  "prediction_range": [
+    0,
+    20
+  ],
+  "drop_zero_grades": false,
+  "test_size": 0.2,
+  "random_state": 42,
+  "n_train": 316,
+  "n_test": 79,
+  "train_metrics": {
+    "MAE": 1.109071729957806,
+    "MSE": 2.205072573839663,
+    "RMSE": 1.484948677173613,
+    "R2": 0.895737773981273
+  },
+  "test_metrics": {
+    "MAE": 2.9473417721518986,
+    "MSE": 14.61403628691983,
+    "RMSE": 3.822830925756439,
+    "R2": 0.2723412705504409
+  },
+  "input_columns": [
+    "school",
+    "sex",
+    "age",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Medu",
+    "Fedu",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "traveltime",
+    "studytime",
+    "failures",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences",
+    "G1",
+    "G2"
+  ],
+  "input_schema": {
+    "school": {
+      "type": "categorical",
+      "values": [
+        "GP",
+        "MS"
+      ]
+    },
+    "sex": {
+      "type": "categorical",
+      "values": [
+        "F",
+        "M"
+      ]
+    },
+    "age": {
+      "type": "numeric",
+      "min": 15.0,
+      "max": 22.0
+    },
+    "address": {
+      "type": "categorical",
+      "values": [
+        "R",
+        "U"
+      ]
+    },
+    "famsize": {
+      "type": "categorical",
+      "values": [
+        "GT3",
+        "LE3"
+      ]
+    },
+    "Pstatus": {
+      "type": "categorical",
+      "values": [
+        "A",
+        "T"
+      ]
+    },
+    "Medu": {
+      "type": "numeric",
+      "min": 0.0,
+      "max": 4.0
+    },
+    "Fedu": {
+      "type": "numeric",
+      "min": 0.0,
+      "max": 4.0
+    },
+    "Mjob": {
+      "type": "categorical",
+      "values": [
+        "at_home",
+        "health",
+        "other",
+        "services",
+        "teacher"
+      ]
+    },
+    "Fjob": {
+      "type": "categorical",
+      "values": [
+        "at_home",
+        "health",
+        "other",
+        "services",
+        "teacher"
+      ]
+    },
+    "reason": {
+      "type": "categorical",
+      "values": [
+        "course",
+        "home",
+        "other",
+        "reputation"
+      ]
+    },
+    "guardian": {
+      "type": "categorical",
+      "values": [
+        "father",
+        "mother",
+        "other"
+      ]
+    },
+    "traveltime": {
+      "type": "numeric",
+      "min": 1.0,
+      "max": 4.0
+    },
+    "studytime": {
+      "type": "numeric",
+      "min": 1.0,
+      "max": 4.0
+    },
+    "failures": {
+      "type": "numeric",
+      "min": 0.0,
+      "max": 3.0
+    },
+    "schoolsup": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ]
+    },
+    "famsup": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ]
+    },
+    "paid": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ]
+    },
+    "activities": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ]
+    },
+    "nursery": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ]
+    },
+    "higher": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ]
+    },
+    "internet": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ]
+    },
+    "romantic": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ]
+    },
+    "famrel": {
+      "type": "numeric",
+      "min": 1.0,
+      "max": 5.0
+    },
+    "freetime": {
+      "type": "numeric",
+      "min": 1.0,
+      "max": 5.0
+    },
+    "goout": {
+      "type": "numeric",
+      "min": 1.0,
+      "max": 5.0
+    },
+    "Dalc": {
+      "type": "numeric",
+      "min": 1.0,
+      "max": 5.0
+    },
+    "Walc": {
+      "type": "numeric",
+      "min": 1.0,
+      "max": 5.0
+    },
+    "health": {
+      "type": "numeric",
+      "min": 1.0,
+      "max": 5.0
+    },
+    "absences": {
+      "type": "numeric",
+      "min": 0.0,
+      "max": 75.0
+    },
+    "G1": {
+      "type": "numeric",
+      "min": 3.0,
+      "max": 19.0
+    },
+    "G2": {
+      "type": "numeric",
+      "min": 0.0,
+      "max": 19.0
+    }
+  },
+  "versions": {
+    "python": "3.14.7",
+    "scikit-learn": "1.9.1",
+    "pandas": "2.3.3",
+    "numpy": "2.5.3",
+    "joblib": "1.6.0"
+  },
+  "note": "Educational project. Not for making real decisions about students."
+}

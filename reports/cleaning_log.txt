@@ -1,0 +1,135 @@
+
+================================================================
+LOADED RAW DATA
+================================================================
+Rows: 395   Columns: 33
+Expected columns missing from file : None
+Unexpected extra columns in file   : None
+
+================================================================
+STEP 0: TEXT STANDARDISATION
+================================================================
+Text cells that had leading/trailing spaces (fixed): 0
+Empty text cells converted to missing              : 0
+
+================================================================
+STEP 1: MISSING VALUES
+================================================================
+No missing values found. Nothing to fill and nothing to drop.
+
+================================================================
+STEP 2: DUPLICATE ROWS
+================================================================
+Duplicate rows (extra copies of an earlier row): 0
+No duplicates found.
+
+================================================================
+STEP 3: DATA TYPES
+================================================================
+Numeric columns that are still not numeric: None
+
+Data types now:
+object    17
+int64     16
+
+Note: categorical columns stay as text. Encoding them is done in Step 4.
+
+================================================================
+STEP 4: UNIQUE VALUES
+================================================================
+Categorical columns: values found (unexpected values are marked):
+  school      ['GP', 'MS']
+  sex         ['F', 'M']
+  address     ['R', 'U']
+  famsize     ['GT3', 'LE3']
+  Pstatus     ['A', 'T']
+  Mjob        ['at_home', 'health', 'other', 'services', 'teacher']
+  Fjob        ['at_home', 'health', 'other', 'services', 'teacher']
+  reason      ['course', 'home', 'other', 'reputation']
+  guardian    ['father', 'mother', 'other']
+  schoolsup   ['no', 'yes']
+  famsup      ['no', 'yes']
+  paid        ['no', 'yes']
+  activities  ['no', 'yes']
+  nursery     ['no', 'yes']
+  higher      ['no', 'yes']
+  internet    ['no', 'yes']
+  romantic    ['no', 'yes']
+
+Numeric columns: number of unique values and observed min / max:
+  age         unique=  8   min=15   max=22
+  Medu        unique=  5   min=0   max=4
+  Fedu        unique=  5   min=0   max=4
+  traveltime  unique=  4   min=1   max=4
+  studytime   unique=  4   min=1   max=4
+  failures    unique=  4   min=0   max=3
+  famrel      unique=  5   min=1   max=5
+  freetime    unique=  5   min=1   max=5
+  goout       unique=  5   min=1   max=5
+  Dalc        unique=  5   min=1   max=5
+  Walc        unique=  5   min=1   max=5
+  health      unique=  5   min=1   max=5
+  absences    unique= 34   min=0   max=75
+  G1          unique= 17   min=3   max=19
+  G2          unique= 17   min=0   max=19
+  G3          unique= 18   min=0   max=20
+
+Constant columns (no information): None
+
+================================================================
+STEP 5: INVALID VALUES
+================================================================
+All numeric values are inside the documented ranges and are whole numbers.
+
+================================================================
+STEP 6: OUTLIERS (IQR rule, nothing removed)
+================================================================
+  age       bounds=[13.00, 21.00]   outliers=1
+            outlier values range: 22 to 22
+  absences  bounds=[-12.00, 20.00]   outliers=15
+            outlier values range: 21 to 75
+  G1        bounds=[0.50, 20.50]   outliers=0
+  G2        bounds=[3.00, 19.00]   outliers=13
+            outlier values range: 0 to 0
+  G3        bounds=[-1.00, 23.00]   outliers=0
+
+Box plots saved to: reports/figures/outlier_boxplots.png
+
+================================================================
+STEP 7: ZERO FINAL GRADES (G3 == 0)
+================================================================
+Rows with G3 == 0: 38 of 395
+
+Summary of G1, G2 and absences for those rows:
+          G1     G2  absences
+count  38.00  38.00      38.0
+mean    7.53   4.66       0.0
+std     1.81   3.70       0.0
+min     4.00   0.00       0.0
+25%     6.00   0.00       0.0
+50%     7.00   5.00       0.0
+75%     9.00   8.00       0.0
+max    12.00  10.00       0.0
+
+Of these, rows with G2 == 0      : 13
+Of these, rows with absences == 0: 38
+
+These rows were flagged and KEPT. We decide how to handle them after EDA (Step 3).
+
+================================================================
+SAVING RESULTS
+================================================================
+Rows in raw file         : 395
+Rows in cleaned file     : 395
+Rows removed             : 0
+Total flags recorded     : 67
+Rows with at least 1 flag: 54
+
+Flags by issue:
+issue
+final grade is 0 (possible missed exam)    38
+possible outlier (IQR rule)                29
+
+Cleaned data  -> data\processed\student_mat_clean.csv
+Flagged rows  -> reports\flagged_rows.csv
+Cleaning log  -> reports\cleaning_log.txt

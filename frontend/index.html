@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Performance Predictor</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>🎓 Student Performance Predictor</h1>
+            <p>Machine Learning Based Student Performance Prediction</p>
+        </header>
+
+        <main>
+
+            <section class="card">
+
+                <h2>Student Information</h2>
+
+                <form id="predictionForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>School</label>
+                            <select id="school">
+                                <option value="GP">GP</option>
+                                <option value="MS">MS</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Sex</label>
+                            <select id="sex">
+                                <option value="F">Female</option>
+                                <option value="M">Male</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" id="age" value="18">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Address</label>
+                            <select id="address">
+                                <option value="U">Urban</option>
+                                <option value="R">Rural</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Family Size</label>
+                            <select id="famsize">
+                                <option value="GT3">Greater than 3</option>
+                                <option value="LE3">3 or less</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Parent Status</label>
+                            <select id="Pstatus">
+                                <option value="A">Apart</option>
+                                <option value="T">Together</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mother Education</label>
+                            <input type="number" id="Medu" value="2">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Father Education</label>
+                            <input type="number" id="Fedu" value="2">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mother Job</label>
+                            <select id="Mjob">
+                                <option value="teacher">Teacher</option>
+                                <option value="health">Health</option>
+                                <option value="services">Services</option>
+                                <option value="at_home">At Home</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Father Job</label>
+                            <select id="Fjob">
+                                <option value="teacher">Teacher</option>
+                                <option value="health">Health</option>
+                                <option value="services">Services</option>
+                                <option value="at_home">At Home</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Reason for School Choice</label>
+                            <select id="reason">
+                                <option value="home">Home</option>
+                                <option value="reputation">Reputation</option>
+                                <option value="course">Course</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Guardian</label>
+                            <select id="guardian">
+                                <option value="mother">Mother</option>
+                                <option value="father">Father</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Travel Time</label>
+                            <input type="number" id="traveltime" value="2">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Study Time</label>
+                            <input type="number" id="studytime" value="2">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Past Failures</label>
+                            <input type="number" id="failures" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label>School Support</label>
+                            <select id="schoolsup">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Family Support</label>
+                            <select id="famsup">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Paid Classes</label>
+                            <select id="paid">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Extra Activities</label>
+                            <select id="activities">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nursery School</label>
+                            <select id="nursery">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Higher Education</label>
+                            <select id="higher">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Internet Access</label>
+                            <select id="internet">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Romantic Relationship</label>
+                            <select id="romantic">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Family Relationship Quality</label>
+                            <input type="number" id="famrel" value="4">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Free Time</label>
+                            <input type="number" id="freetime" value="3">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Going Out</label>
+                            <input type="number" id="goout" value="3">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Workday Alcohol</label>
+                            <input type="number" id="Dalc" value="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Weekend Alcohol</label>
+                            <input type="number" id="Walc" value="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Health</label>
+                            <input type="number" id="health" value="3">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Absences</label>
+                            <input type="number" id="absences" value="4">
+                        </div>
+
+                        <div class="form-group">
+                            <label>First Period Grade (G1)</label>
+                            <input type="number" id="G1" value="10">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Second Period Grade (G2)</label>
+                            <input type="number" id="G2" value="10">
+                        </div>
+
+                    </div>
+
+                    <button type="submit">
+                        🔮 Predict Student Performance
+                    </button>
+
+                </form>
+
+            </section>
+
+            <section id="result" class="result-card">
+
+                <h2>Prediction Result</h2>
+
+                <div id="resultContent">
+                    <p>Enter student information and click the prediction button.</p>
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Student Performance Prediction • Machine Learning Project</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

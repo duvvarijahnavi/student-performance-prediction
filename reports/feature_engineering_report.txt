@@ -1,0 +1,83 @@
+
+================================================================
+1. LOAD CLEANED DATA AND SPLIT INTO TRAIN / TEST
+================================================================
+Rows: 395   Columns: 33   (DROP_ZERO_GRADES = False)
+Training rows: 316    Test rows: 79
+Share passing (G3 >= 10) in train: 67.1%    in test: 67.1%
+Leakage check: 'G3' is not among the 32 input columns.  OK
+
+================================================================
+2. ENGINEERED FEATURES (first 8 training rows, so you can verify by eye)
+================================================================
+     absences  absences_log  Medu  Fedu  parent_edu_avg  Dalc  Walc  alcohol_avg  failures  has_past_failure  G1  G2  grade_trend
+140         0          0.00     4     3             3.5     1     1          1.0         0               0.0   7   9            2
+245         6          1.95     2     1             1.5     1     1          1.0         0               0.0  18  18            0
+131         0          0.00     1     1             1.0     1     2          1.5         0               0.0   8   0           -8
+153         0          0.00     3     2             2.5     1     1          1.0         3               1.0   5   0           -5
+386         7          2.08     4     4             4.0     2     2          2.0         0               0.0   6   5           -1
+50          2          1.10     2     2             2.0     2     3          2.5         0               0.0  12  13            1
+290        11          2.48     4     2             3.0     1     4          2.5         0               0.0  12  11           -1
+279         8          2.20     4     3             3.5     1     2          1.5         0               0.0  10  11            1
+
+Skewness of absences (training data). Closer to 0 = more symmetric:
+  raw absences        : 4.02
+  log(1 + absences)   : 0.12
+
+================================================================
+3. PIPELINE CHECK: A_late_prediction
+================================================================
+Scenario A (late prediction): G1, G2 and grade_trend are used.
+
+Transformed training shape : (316, 49)
+Transformed test shape     : (79, 49)
+Feature columns            : 49  (19 numeric + 30 one-hot/binary)
+Automatic checks           : no NaN, column counts match, no G3, no forbidden grades.  OK
+
+Numeric features (scaled):
+  num__age, num__Medu, num__Fedu, num__traveltime, num__studytime, num__failures, num__famrel, num__freetime, num__goout, num__Dalc, num__Walc, num__health, num__absences_log, num__parent_edu_avg, num__alcohol_avg, num__has_past_failure, num__G1, num__G2, num__grade_trend
+
+Categorical features (encoded):
+  cat__school_MS, cat__sex_M, cat__address_U, cat__famsize_LE3, cat__Pstatus_T, cat__schoolsup_yes, cat__famsup_yes, cat__paid_yes, cat__activities_yes, cat__nursery_yes, cat__higher_yes, cat__internet_yes, cat__romantic_yes, cat__Mjob_at_home, cat__Mjob_health, cat__Mjob_other, cat__Mjob_services, cat__Mjob_teacher, cat__Fjob_at_home, cat__Fjob_health, cat__Fjob_other, cat__Fjob_services, cat__Fjob_teacher, cat__reason_course, cat__reason_home, cat__reason_other, cat__reason_reputation, cat__guardian_father, cat__guardian_mother, cat__guardian_other
+
+Scaling check (train mean should be about 0 and std about 1;
+test values will NOT be exactly 0 and 1, because the scaler never saw the test rows):
+                   train_mean  train_std  test_mean  test_std
+num__age                  0.0      1.002      0.099     0.980
+num__absences_log        -0.0      1.002      0.132     1.035
+num__studytime           -0.0      1.002     -0.015     1.101
+
+Single-row test (like a Streamlit input): output shape = (1, 49)
+Feature names saved -> reports\feature_names_A_late_prediction.csv
+
+================================================================
+3. PIPELINE CHECK: B_early_warning
+================================================================
+Scenario B (early warning): G1, G2 and grade_trend are NOT used.
+
+Transformed training shape : (316, 46)
+Transformed test shape     : (79, 46)
+Feature columns            : 46  (16 numeric + 30 one-hot/binary)
+Automatic checks           : no NaN, column counts match, no G3, no forbidden grades.  OK
+
+Numeric features (scaled):
+  num__age, num__Medu, num__Fedu, num__traveltime, num__studytime, num__failures, num__famrel, num__freetime, num__goout, num__Dalc, num__Walc, num__health, num__absences_log, num__parent_edu_avg, num__alcohol_avg, num__has_past_failure
+
+Categorical features (encoded):
+  cat__school_MS, cat__sex_M, cat__address_U, cat__famsize_LE3, cat__Pstatus_T, cat__schoolsup_yes, cat__famsup_yes, cat__paid_yes, cat__activities_yes, cat__nursery_yes, cat__higher_yes, cat__internet_yes, cat__romantic_yes, cat__Mjob_at_home, cat__Mjob_health, cat__Mjob_other, cat__Mjob_services, cat__Mjob_teacher, cat__Fjob_at_home, cat__Fjob_health, cat__Fjob_other, cat__Fjob_services, cat__Fjob_teacher, cat__reason_course, cat__reason_home, cat__reason_other, cat__reason_reputation, cat__guardian_father, cat__guardian_mother, cat__guardian_other
+
+Scaling check (train mean should be about 0 and std about 1;
+test values will NOT be exactly 0 and 1, because the scaler never saw the test rows):
+                   train_mean  train_std  test_mean  test_std
+num__age                  0.0      1.002      0.099     0.980
+num__absences_log        -0.0      1.002      0.132     1.035
+num__studytime           -0.0      1.002     -0.015     1.101
+
+Single-row test (like a Streamlit input): output shape = (1, 46)
+Feature names saved -> reports\feature_names_B_early_warning.csv
+
+================================================================
+4. DONE
+================================================================
+The pipelines are built and verified. No model was trained and no data file was changed.
+Report saved -> reports\feature_engineering_report.txt

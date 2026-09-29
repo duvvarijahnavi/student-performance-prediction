@@ -1,0 +1,76 @@
+
+==============================================================================
+SCENARIO: A_late_prediction
+==============================================================================
+Scenario A (late prediction): G1, G2 and grade_trend are used.
+
+Baseline (predict mean) cv_RMSE: 4.578
+
+Real models, sorted by cross-validated RMSE:
+                   cv_MAE  cv_RMSE  cv_RMSE_se  cv_R2  train_RMSE  cv_minus_train_RMSE  within_1se_of_best  beats_baseline
+model                                                                                                                     
+Random Forest       1.004    1.583       0.129  0.868       0.647                0.936                True            True
+Gradient Boosting   1.131    1.720       0.135  0.844       0.818                0.902               False            True
+Ridge Regression    1.362    1.947       0.076  0.808       1.636                0.312               False            True
+Linear Regression   1.374    1.959       0.075  0.806       1.636                0.324               False            True
+Decision Tree       1.182    2.220       0.176  0.741       1.188                1.031               False            True
+
+Lowest cv_RMSE          : Random Forest (1.583)
+Lowest cv_RMSE + 1 SE   : 1.712
+Rule used               : One-standard-error rule: simplest model whose cv_RMSE is within one standard error of the lowest cv_RMSE.
+
+SELECTED MODEL: Random Forest
+  cv_RMSE = 1.583 (SE 0.129),  cv_MAE = 1.004,  cv_R2 = 0.868
+  Its cv_RMSE is 65.4% lower than the baseline's (4.578).
+  It also has the lowest cv_RMSE of all real models.
+  Other models statistically indistinguishable from the best: none
+  Train RMSE = 0.647 vs cv RMSE = 1.583 (gap 0.936).
+  WARNING (rule of thumb): train error is less than half of the cv error. Overfitting is likely.
+
+  Test-set metrics for the selected model (shown AFTER choosing, never used to choose):
+    MAE = 1.018   MSE = 2.491   RMSE = 1.578   R2 = 0.876
+    (cv_RMSE was 1.583. With only a small test set, some difference is normal.)
+
+==============================================================================
+SCENARIO: B_early_warning
+==============================================================================
+Scenario B (early warning): G1, G2 and grade_trend are NOT used.
+
+Baseline (predict mean) cv_RMSE: 4.578
+
+Real models, sorted by cross-validated RMSE:
+                   cv_MAE  cv_RMSE  cv_RMSE_se  cv_R2  train_RMSE  cv_minus_train_RMSE  within_1se_of_best  beats_baseline
+model                                                                                                                     
+Random Forest       2.953    3.869       0.172  0.281       1.485                2.384                True            True
+Gradient Boosting   3.088    4.094       0.122  0.186       1.934                2.160               False            True
+Ridge Regression    3.258    4.204       0.118  0.129       3.677                0.527               False            True
+Linear Regression   3.276    4.227       0.123  0.118       3.676                0.551               False            True
+Decision Tree       3.624    5.028       0.106 -0.235       3.265                1.763               False           False
+
+Lowest cv_RMSE          : Random Forest (3.869)
+Lowest cv_RMSE + 1 SE   : 4.041
+Rule used               : One-standard-error rule: simplest model whose cv_RMSE is within one standard error of the lowest cv_RMSE.
+
+SELECTED MODEL: Random Forest
+  cv_RMSE = 3.869 (SE 0.172),  cv_MAE = 2.953,  cv_R2 = 0.281
+  Its cv_RMSE is 15.5% lower than the baseline's (4.578).
+  It also has the lowest cv_RMSE of all real models.
+  Other models statistically indistinguishable from the best: none
+  Train RMSE = 1.485 vs cv RMSE = 3.869 (gap 2.384).
+  WARNING (rule of thumb): train error is less than half of the cv error. Overfitting is likely.
+
+  Test-set metrics for the selected model (shown AFTER choosing, never used to choose):
+    MAE = 2.947   MSE = 14.614   RMSE = 3.823   R2 = 0.272
+    (cv_RMSE was 3.869. With only a small test set, some difference is normal.)
+
+==============================================================================
+CHARTS AND FILES
+==============================================================================
+Saved: reports\figures\models\best_model_cv_rmse.png
+Saved: reports\figures\models\best_model_metric_grid.png
+Saved: reports\figures\models\best_model_train_cv_test.png
+Saved: reports\best_model_selection.csv
+
+Reminders:
+  - This selection is among UNTUNED models. Rerun it after hyperparameter tuning.
+  - Choosing scenario A or B depends on your goal (late prediction vs early warning), not on the scores.

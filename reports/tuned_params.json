@@ -1,0 +1,26 @@
+{
+  "A_late_prediction": {
+    "selected_model": "Random Forest",
+    "tuned_model": "Random Forest",
+    "best_params": {
+      "max_depth": null,
+      "max_features": 1.0,
+      "min_samples_leaf": 4
+    },
+    "cv_RMSE_original": 1.58274902691942,
+    "cv_RMSE_tuned": 1.548944162578711,
+    "adopt_tuned": false
+  },
+  "B_early_warning": {
+    "selected_model": "Random Forest",
+    "tuned_model": "Random Forest",
+    "best_params": {
+      "max_depth": null,
+      "max_features": 1.0,
+      "min_samples_leaf": 8
+    },
+    "cv_RMSE_original": 3.8686208851521355,
+    "cv_RMSE_tuned": 3.8531409512486596,
+    "adopt_tuned": false
+  }
+}

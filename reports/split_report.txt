@@ -1,0 +1,62 @@
+
+================================================================
+1. LOAD THE CLEANED DATA
+================================================================
+Rows: 395   Columns: 33   (DROP_ZERO_GRADES = False)
+
+================================================================
+2. SEPARATE X (INPUTS) AND y (TARGET)
+================================================================
+Target column        : G3  (final grade, whole numbers from 0 to 20)
+X shape (all rows)   : (395, 32)
+y shape (all rows)   : (395,)
+Is 'G3' inside X? False   (must be False)
+
+================================================================
+3. SPLIT: 80% TRAIN / 20% TEST (random_state=42)
+================================================================
+X_train shape: (316, 32)
+X_test  shape: (79, 32)
+y_train shape: (316,)
+y_test  shape: (79,)
+Share of rows in test set: 20.0%
+
+================================================================
+4. AUTOMATIC LEAKAGE AND SANITY CHECKS
+================================================================
+Check 1: train rows + test rows = total rows.                       OK
+Check 2: no row appears in both train and test.                    OK
+Check 3: every X row is still matched with its own y value.        OK
+Check 4: 'G3' is not among the input columns of either set.       OK
+Check 5: test rows with an identical input row in train: 0   (informational)
+Check 6: running the split a second time gives identical rows.     OK
+
+================================================================
+5. DO TRAIN AND TEST LOOK SIMILAR? (target G3)
+================================================================
+        train   test
+count  316.00  79.00
+mean    10.42  10.38
+std      4.61   4.51
+min      0.00   0.00
+25%      8.00   9.00
+50%     11.00  10.00
+75%     14.00  13.00
+max     20.00  19.00
+
+Share passing (G3 >= 10, our own pass mark):
+  all data : 67.1%
+  train    : 67.1%
+  test     : 67.1%
+
+Rows with G3 == 0:
+  all data : 38
+  train    : 31
+  test     : 7
+
+================================================================
+6. DONE
+================================================================
+The split is created and verified. Nothing was fitted and no data file was changed.
+Reminder: the test set stays untouched until the final evaluation.
+Report saved -> reports\split_report.txt

@@ -1,0 +1,3 @@
+scenario,selected_model,lowest_cv_rmse_model,selection_rule,baseline_cv_RMSE,cv_MAE,cv_MSE,cv_RMSE,cv_R2,test_MAE,test_MSE,test_RMSE,test_R2
+A_late_prediction,Random Forest,Random Forest,One-standard-error rule: simplest model whose cv_RMSE is within one standard error of the lowest cv_RMSE.,4.578069727303299,1.0035616732804231,2.588113717482364,1.58274902691942,0.8682607558344436,1.0181434599156118,2.4911004219409287,1.5783220273255163,0.8759637014461766
+B_early_warning,Random Forest,Random Forest,One-standard-error rule: simplest model whose cv_RMSE is within one standard error of the lowest cv_RMSE.,4.578069727303299,2.9525515873015875,15.114421482583774,3.868620885152136,0.2808671040871259,2.947341772151898,14.61403628691983,3.822830925756439,0.2723412705504409
