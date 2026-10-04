@@ -28,6 +28,7 @@ st.markdown("""
 /* Whole application background */
 .stApp {
     background-color: #f5f7fb;
+    color: #222222;
 }
 
 /* Main title */
@@ -37,6 +38,7 @@ st.markdown("""
     font-weight: 700;
     margin-top: 10px;
     margin-bottom: 5px;
+    color: #222222;
 }
 
 /* Subtitle */
@@ -44,6 +46,7 @@ st.markdown("""
     text-align: center;
     font-size: 17px;
     margin-bottom: 30px;
+    color: #444444;
 }
 
 /* Section title */
@@ -52,6 +55,7 @@ st.markdown("""
     font-weight: 600;
     margin-top: 20px;
     margin-bottom: 15px;
+    color: #222222;
 }
 
 /* Result box */
@@ -62,18 +66,21 @@ st.markdown("""
     text-align: center;
     border: 1px solid #d9dfe8;
     margin-top: 20px;
+    color: #222222;
 }
 
 /* Result title */
 .result-title {
     font-size: 18px;
     font-weight: 600;
+    color: #222222;
 }
 
 /* Result value */
 .result-value {
     font-size: 32px;
     font-weight: 700;
+    color: #222222;
 }
 
 /* Buttons */
@@ -90,6 +97,29 @@ st.markdown("""
 .stSelectbox,
 .stTextInput {
     margin-bottom: 10px;
+}
+
+/* Mobile screen */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 30px;
+        color: #222222;
+    }
+
+    .subtitle {
+        font-size: 16px;
+        color: #444444;
+    }
+
+    .section-title {
+        font-size: 21px;
+        color: #222222;
+    }
+
+    .result-value {
+        font-size: 28px;
+        color: #222222;
+    }
 }
 
 </style>
