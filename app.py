@@ -83,13 +83,21 @@ st.markdown("""
     color: #222222;
 }
 
-/* Buttons */
 .stButton > button {
     width: 100%;
     border-radius: 10px;
     padding: 10px;
     font-size: 17px;
     font-weight: 600;
+    background-color: #dbeafe;
+    color: #1e3a8a;
+    border: 1px solid #93c5fd;
+}
+
+.stButton > button:hover {
+    background-color: #bfdbfe;
+    color: #1e3a8a;
+}
 }
 
 /* Input spacing */
