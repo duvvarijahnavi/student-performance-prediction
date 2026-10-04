@@ -27,8 +27,25 @@ st.markdown("""
 
 /* Whole application background */
 .stApp {
-    background-color: #f5f7fb;
-    color: #222222;
+    background-color: #ffffff !important;
+    color: #222222 !important;
+}
+/* Light page and content areas */
+[data-testid="stAppViewContainer"] {
+    background-color: #ffffff !important;
+}
+
+[data-testid="stHeader"] {
+    background-color: #ffffff !important;
+}
+
+[data-testid="stSidebar"] {
+    background-color: #ffffff !important;
+}
+
+[data-testid="stToolbar"] {
+    background-color: #ffffff !important;
+}
 }
 
 /* Main title */
@@ -125,8 +142,21 @@ st.markdown("""
     }
 
     .result-value {
-        font-size: 28px;
-        color: #222222;
+        font-size: 30px;
+        color: #1e3a8a !important;
+        font-weight: 700;
+    }
+
+    /* Predict Grade button */
+    .stButton > button {
+        background-color: #dbeafe !important;
+        color: #1e3a8a !important;
+        border: 1px solid #93c5fd !important;
+    }
+
+    .stButton > button p,
+    .stButton > button span {
+        color: #1e3a8a !important;
     }
 }
 
