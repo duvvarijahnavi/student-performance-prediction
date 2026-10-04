@@ -76,11 +76,11 @@ st.markdown("""
     color: #222222;
 }
 
-/* Result value */
 .result-value {
     font-size: 32px;
     font-weight: 700;
-    color: #222222;
+    color: #1e3a8a;
+}
 }
 
 .stButton > button {
@@ -259,19 +259,7 @@ st.write(
     "Estimate a student's final grade (G3, on a scale of 0 to 20) from their "
     "background, study habits and lifestyle."
 )
-st.info(
-    f"**Model in use:** {meta['model_name']}  |  **Scenario:** {meta['scenario']}\n\n"
-    f"On unseen test students, predictions were typically off by about "
-    f"**{meta['test_metrics']['MAE']:.1f} grade points** (Mean Absolute Error). "
-    "Treat every prediction as an estimate, not a certainty.",
-    icon="ℹ️",
-)
-st.warning(
-    "**Educational project only.** This tool is a machine learning demonstration "
-    "and must not be used to make real decisions about a student's education, "
-    "placement or support.",
-    icon="⚠️",
-)
+
 
 st.divider()
 
