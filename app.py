@@ -48,110 +48,143 @@ st.markdown("""
 }
 }
 
-/* Main title */
-.main-title {
-    text-align: center;
-    font-size: 40px;
-    font-weight: 700;
-    margin-top: 10px;
-    margin-bottom: 5px;
+div.main-title {
+    text-align: center !important;
+    font-size: 40px !important;
+    font-weight: 700 !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    color: #1e293b !important;
+    line-height: 1.2 !important;
+}
+
+@media (max-width: 768px) {
+    div.main-title {
+        font-size: 30px !important;
+        text-align: center !important;
+        color: #1e293b !important;
+    }
+}
+}
+
+/* =========================================================
+   FINAL READABILITY FIX
+   ========================================================= */
+
+/* Page */
+.stApp {
+    background-color: #f8fafc !important;
+    color: #222222 !important;
+}
+
+/* All normal text */
+.stApp p,
+.stApp span,
+.stApp label,
+.stApp div {
     color: #222222;
 }
 
-/* Subtitle */
-.subtitle {
-    text-align: center;
-    font-size: 17px;
-    margin-bottom: 30px;
-    color: #444444;
-}
-
-/* Section title */
+/* Section headings */
 .section-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    color: #222222;
+    color: #1e293b !important;
 }
 
-/* Result box */
+/* Streamlit widget labels */
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] span,
+[data-testid="stWidgetLabel"] label {
+    color: #334155 !important;
+}
+
+/* Select boxes */
+[data-baseweb="select"] {
+    background-color: #ffffff !important;
+}
+
+[data-baseweb="select"] * {
+    color: #222222 !important;
+}
+
+/* Select dropdown menu */
+[data-baseweb="popover"] {
+    background-color: #ffffff !important;
+}
+
+[data-baseweb="popover"] * {
+    color: #222222 !important;
+}
+
+/* Sliders */
+[data-testid="stSlider"] label,
+[data-testid="stSlider"] p,
+[data-testid="stSlider"] span {
+    color: #334155 !important;
+}
+
+/* Slider value */
+[data-testid="stSlider"] [data-testid="stThumbValue"] {
+    color: #334155 !important;
+}
+
+/* Predict button */
+.stButton > button {
+    background-color: #dbeafe !important;
+    color: #1e3a8a !important;
+    border: 1px solid #93c5fd !important;
+}
+
+/* Predict button text */
+.stButton > button p,
+.stButton > button span {
+    color: #1e3a8a !important;
+}
+
+/* Result */
 .result-box {
-    background-color: white;
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    border: 1px solid #d9dfe8;
-    margin-top: 20px;
-    color: #222222;
+    background-color: #ffffff !important;
+    color: #222222 !important;
 }
 
-/* Result title */
 .result-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #222222;
+    color: #334155 !important;
 }
 
 .result-value {
-    font-size: 32px;
-    font-weight: 700;
-    color: #1e3a8a;
-}
+    color: #1e3a8a !important;
+    font-weight: 700 !important;
 }
 
-.stButton > button {
-    width: 100%;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 17px;
-    font-weight: 600;
-    background-color: #dbeafe;
-    color: #1e3a8a;
-    border: 1px solid #93c5fd;
-}
-
-.stButton > button:hover {
-    background-color: #bfdbfe;
-    color: #1e3a8a;
-}
-}
-
-/* Input spacing */
-.stNumberInput,
-.stSelectbox,
-.stTextInput {
-    margin-bottom: 10px;
-}
-
-/* Mobile screen */
+/* Mobile */
 @media (max-width: 768px) {
+
     .main-title {
-        font-size: 30px;
-        color: #222222;
+        font-size: 30px !important;
+        color: #1e293b !important;
     }
 
     .subtitle {
-        font-size: 16px;
-        color: #444444;
+        font-size: 16px !important;
+        color: #475569 !important;
     }
 
     .section-title {
-        font-size: 21px;
-        color: #222222;
+        font-size: 21px !important;
+        color: #1e293b !important;
+    }
+
+    .result-title {
+        color: #334155 !important;
     }
 
     .result-value {
-        font-size: 30px;
+        font-size: 30px !important;
         color: #1e3a8a !important;
-        font-weight: 700;
     }
 
-    /* Predict Grade button */
     .stButton > button {
         background-color: #dbeafe !important;
         color: #1e3a8a !important;
-        border: 1px solid #93c5fd !important;
     }
 
     .stButton > button p,
