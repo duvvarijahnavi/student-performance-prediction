@@ -25,30 +25,23 @@ st.markdown(
 st.markdown("""
 <style>
 
-/* Whole application background */
+/* ===== CLEAN APPLICATION DESIGN ===== */
+
 .stApp {
-    background-color: #ffffff !important;
-    color: #222222 !important;
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
 }
-/* Light page and content areas */
+
 [data-testid="stAppViewContainer"] {
-    background-color: #ffffff !important;
+    background-color: #f8fafc !important;
 }
 
 [data-testid="stHeader"] {
-    background-color: #ffffff !important;
+    background-color: #f8fafc !important;
 }
 
-[data-testid="stSidebar"] {
-    background-color: #ffffff !important;
-}
-
-[data-testid="stToolbar"] {
-    background-color: #ffffff !important;
-}
-}
-
-div.main-title {
+/* Main title */
+.main-title {
     text-align: center !important;
     font-size: 40px !important;
     font-weight: 700 !important;
@@ -58,39 +51,24 @@ div.main-title {
     line-height: 1.2 !important;
 }
 
-@media (max-width: 768px) {
-    div.main-title {
-        font-size: 30px !important;
-        text-align: center !important;
-        color: #1e293b !important;
-    }
-}
-}
-
-/* =========================================================
-   FINAL READABILITY FIX
-   ========================================================= */
-
-/* Page */
-.stApp {
-    background-color: #f8fafc !important;
-    color: #222222 !important;
-}
-
-/* All normal text */
-.stApp p,
-.stApp span,
-.stApp label,
-.stApp div {
-    color: #222222;
+/* Subtitle */
+.subtitle {
+    text-align: center !important;
+    font-size: 17px !important;
+    margin-bottom: 30px !important;
+    color: #475569 !important;
 }
 
 /* Section headings */
 .section-title {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    margin-top: 20px !important;
+    margin-bottom: 15px !important;
     color: #1e293b !important;
 }
 
-/* Streamlit widget labels */
+/* Widget labels */
 [data-testid="stWidgetLabel"] p,
 [data-testid="stWidgetLabel"] span,
 [data-testid="stWidgetLabel"] label {
@@ -102,17 +80,17 @@ div.main-title {
     background-color: #ffffff !important;
 }
 
-[data-baseweb="select"] * {
-    color: #222222 !important;
+[data-baseweb="select"] div {
+    color: #1e293b !important;
 }
 
-/* Select dropdown menu */
+/* Dropdown menu */
 [data-baseweb="popover"] {
     background-color: #ffffff !important;
 }
 
 [data-baseweb="popover"] * {
-    color: #222222 !important;
+    color: #1e293b !important;
 }
 
 /* Sliders */
@@ -122,37 +100,51 @@ div.main-title {
     color: #334155 !important;
 }
 
-/* Slider value */
-[data-testid="stSlider"] [data-testid="stThumbValue"] {
+/* Result box */
+.result-box {
+    background-color: #ffffff !important;
+    padding: 25px !important;
+    border-radius: 15px !important;
+    text-align: center !important;
+    border: 1px solid #d9dfe8 !important;
+    margin-top: 20px !important;
+    color: #1e293b !important;
+}
+
+.result-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
     color: #334155 !important;
+}
+
+.result-value {
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    color: #1e3a8a !important;
 }
 
 /* Predict button */
 .stButton > button {
+    width: 100% !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
     background-color: #dbeafe !important;
     color: #1e3a8a !important;
     border: 1px solid #93c5fd !important;
 }
 
-/* Predict button text */
 .stButton > button p,
 .stButton > button span {
     color: #1e3a8a !important;
 }
 
-/* Result */
-.result-box {
-    background-color: #ffffff !important;
-    color: #222222 !important;
-}
-
-.result-title {
-    color: #334155 !important;
-}
-
-.result-value {
-    color: #1e3a8a !important;
-    font-weight: 700 !important;
+/* Input spacing */
+.stNumberInput,
+.stSelectbox,
+.stTextInput {
+    margin-bottom: 10px !important;
 }
 
 /* Mobile */
@@ -160,6 +152,7 @@ div.main-title {
 
     .main-title {
         font-size: 30px !important;
+        margin-top: 10px !important;
         color: #1e293b !important;
     }
 
@@ -174,6 +167,7 @@ div.main-title {
     }
 
     .result-title {
+        font-size: 18px !important;
         color: #334155 !important;
     }
 
@@ -192,7 +186,6 @@ div.main-title {
         color: #1e3a8a !important;
     }
 }
-
 </style>
 """, unsafe_allow_html=True)
 
