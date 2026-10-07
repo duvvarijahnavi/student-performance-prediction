@@ -499,13 +499,3 @@ with right:
     st.metric("Likely outcome", "Pass ✅" if passed else "At risk ⚠️")
 
 st.progress(min(max(grade / 20, 0.0), 1.0))
-st.divider()
-st.subheader("Result")
-
-left, right = st.columns(2)
-with left:
-    st.metric("Predicted final grade (G3)", f"{grade:.1f} / 20")
-with right:
-    st.metric("Likely outcome", "Pass ✅" if passed else "At risk ⚠️")
-
-st.progress(min(max(grade / 20, 0.0), 1.0))
