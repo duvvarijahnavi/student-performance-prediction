@@ -15,17 +15,20 @@ import sys
 from pathlib import Path
 
 import streamlit as st
+st.set_page_config(
+    page_title="Student Performance Predictor",
+    page_icon="🎓",
+    layout="centered"
+)
 # ============================================================
 # CUSTOM CSS
 # ============================================================
-st.markdown(
-    '<div class="main-title">🎓 Student Performance Predictor</div>',
-    unsafe_allow_html=True
-)
 st.markdown("""
 <style>
 
-/* ===== CLEAN APPLICATION DESIGN ===== */
+/* ================================
+   MAIN APPLICATION
+================================ */
 
 .stApp {
     background-color: #f8fafc !important;
@@ -40,7 +43,11 @@ st.markdown("""
     background-color: #f8fafc !important;
 }
 
-/* Main title */
+
+/* ================================
+   TITLE
+================================ */
+
 .main-title {
     text-align: center !important;
     font-size: 40px !important;
@@ -51,7 +58,6 @@ st.markdown("""
     line-height: 1.2 !important;
 }
 
-/* Subtitle */
 .subtitle {
     text-align: center !important;
     font-size: 17px !important;
@@ -59,7 +65,11 @@ st.markdown("""
     color: #475569 !important;
 }
 
-/* Section headings */
+
+/* ================================
+   SECTION HEADINGS
+================================ */
+
 .section-title {
     font-size: 24px !important;
     font-weight: 600 !important;
@@ -68,14 +78,22 @@ st.markdown("""
     color: #1e293b !important;
 }
 
-/* Widget labels */
+
+/* ================================
+   INPUT LABELS
+================================ */
+
 [data-testid="stWidgetLabel"] p,
 [data-testid="stWidgetLabel"] span,
 [data-testid="stWidgetLabel"] label {
     color: #334155 !important;
 }
 
-/* Select boxes */
+
+/* ================================
+   SELECT BOX
+================================ */
+
 [data-baseweb="select"] {
     background-color: #ffffff !important;
 }
@@ -84,7 +102,8 @@ st.markdown("""
     color: #1e293b !important;
 }
 
-/* Dropdown menu */
+
+/* Dropdown */
 [data-baseweb="popover"] {
     background-color: #ffffff !important;
 }
@@ -93,99 +112,205 @@ st.markdown("""
     color: #1e293b !important;
 }
 
-/* Sliders */
+
+/* ================================
+   SLIDERS
+================================ */
+
 [data-testid="stSlider"] label,
 [data-testid="stSlider"] p,
 [data-testid="stSlider"] span {
     color: #334155 !important;
 }
 
-/* Result box */
-.result-box {
-    background-color: #ffffff !important;
-    padding: 25px !important;
-    border-radius: 15px !important;
-    text-align: center !important;
-    border: 1px solid #d9dfe8 !important;
-    margin-top: 20px !important;
-    color: #1e293b !important;
-}
 
-.result-title {
-    font-size: 18px !important;
-    font-weight: 600 !important;
-    color: #334155 !important;
-}
+/* ================================
+   PREDICT BUTTON
+================================ */
 
-.result-value {
-    font-size: 32px !important;
-    font-weight: 700 !important;
-    color: #1e3a8a !important;
-}
+/* IMPORTANT:
+   This targets st.form_submit_button
+*/
 
-/* Predict button */
-.stButton > button {
+[data-testid="stFormSubmitButton"] > button {
     width: 100% !important;
+    min-height: 52px !important;
     border-radius: 10px !important;
-    padding: 10px !important;
-    font-size: 17px !important;
+
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+
+    border: 2px solid #1d4ed8 !important;
+
+    font-size: 18px !important;
+    font-weight: 700 !important;
+
+    padding: 12px 20px !important;
+
+    cursor: pointer !important;
+}
+
+/* Make sure the text inside the button is white */
+
+[data-testid="stFormSubmitButton"] > button p,
+[data-testid="stFormSubmitButton"] > button span {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+
+/* Hover */
+
+[data-testid="stFormSubmitButton"] > button:hover {
+    background-color: #1d4ed8 !important;
+    color: #ffffff !important;
+}
+
+
+/* ================================
+   RESULT CARD
+================================ */
+
+.result-container {
+    background: #ffffff !important;
+
+    border: 1px solid #d9dfe8 !important;
+    border-radius: 16px !important;
+
+    padding: 24px !important;
+
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+
+    text-align: center !important;
+
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+}
+
+.result-heading {
+    font-size: 25px !important;
+    font-weight: 700 !important;
+
+    color: #1e293b !important;
+
+    margin-bottom: 22px !important;
+}
+
+.result-item {
+    background: #f8fafc !important;
+
+    border-radius: 12px !important;
+
+    padding: 16px !important;
+
+    margin: 10px 0 !important;
+
+    text-align: center !important;
+}
+
+.result-label {
+    font-size: 15px !important;
     font-weight: 600 !important;
-    background-color: #dbeafe !important;
-    color: #1e3a8a !important;
-    border: 1px solid #93c5fd !important;
+
+    color: #475569 !important;
+
+    margin-bottom: 6px !important;
 }
 
-.stButton > button p,
-.stButton > button span {
-    color: #1e3a8a !important;
+.result-number {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+
+    color: #1d4ed8 !important;
 }
 
-/* Input spacing */
-.stNumberInput,
-.stSelectbox,
-.stTextInput {
-    margin-bottom: 10px !important;
+.result-pass {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+
+    color: #15803d !important;
 }
 
-/* Mobile */
+.result-risk {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+
+    color: #b45309 !important;
+}
+
+
+/* ================================
+   MOBILE RESPONSIVE
+================================ */
+
 @media (max-width: 768px) {
 
     .main-title {
-        font-size: 30px !important;
-        margin-top: 10px !important;
-        color: #1e293b !important;
+        font-size: 29px !important;
+        line-height: 1.25 !important;
+        margin-top: 5px !important;
     }
 
     .subtitle {
-        font-size: 16px !important;
-        color: #475569 !important;
+        font-size: 15px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 20px !important;
     }
 
     .section-title {
-        font-size: 21px !important;
-        color: #1e293b !important;
+        font-size: 20px !important;
     }
 
-    .result-title {
+    /* Bigger mobile button */
+
+    [data-testid="stFormSubmitButton"] > button {
+        min-height: 54px !important;
+
         font-size: 18px !important;
-        color: #334155 !important;
+
+        padding: 13px 16px !important;
+
+        border-radius: 10px !important;
     }
 
-    .result-value {
-        font-size: 30px !important;
-        color: #1e3a8a !important;
+    [data-testid="stFormSubmitButton"] > button p,
+    [data-testid="stFormSubmitButton"] > button span {
+        color: #ffffff !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
     }
 
-    .stButton > button {
-        background-color: #dbeafe !important;
-        color: #1e3a8a !important;
+    /* Mobile result */
+
+    .result-container {
+        padding: 16px !important;
+        border-radius: 14px !important;
     }
 
-    .stButton > button p,
-    .stButton > button span {
-        color: #1e3a8a !important;
+    .result-heading {
+        font-size: 22px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .result-item {
+        padding: 14px !important;
+        margin: 9px 0 !important;
+    }
+
+    .result-label {
+        font-size: 14px !important;
+    }
+
+    .result-number {
+        font-size: 26px !important;
+    }
+
+    .result-pass,
+    .result-risk {
+        font-size: 22px !important;
     }
 }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -205,7 +330,6 @@ from src.predict import InvalidStudentInput, get_metadata, predict_student
 # ----------------------------------------------------------------------
 # PAGE SETUP
 # ----------------------------------------------------------------------
-st.set_page_config(page_title="Student Performance Predictor", page_icon="🎓", layout="centered")
 
 PASS_MARK = 10  # our own assumption, used throughout this project
 
@@ -362,17 +486,64 @@ if submitted:
 
     grade = result["predicted_grade"]
     passed = grade >= PASS_MARK
+st.divider()
 
-    st.divider()
-    st.subheader("Result")
+# ============================================================
+# RESPONSIVE PREDICTION RESULT
+# ============================================================
 
-    left, right = st.columns(2)
-    with left:
-        st.metric("Predicted final grade (G3)", f"{grade:.1f} / 20")
-    with right:
-        st.metric("Likely outcome", "Pass ✅" if passed else "At risk ⚠️")
+outcome_text = "PASS ✅" if passed else "AT RISK ⚠️"
+outcome_class = "result-pass" if passed else "result-risk"
 
-    st.progress(min(max(grade / 20, 0.0), 1.0))
+mae = meta["test_metrics"]["MAE"]
+
+st.markdown(
+    f"""
+    <div class="result-container">
+
+        <div class="result-heading">
+            🎓 Prediction Result
+        </div>
+
+        <div class="result-item">
+            <div class="result-label">
+                Predicted Final Grade (G3)
+            </div>
+
+            <div class="result-number">
+                {grade:.1f} / 20
+            </div>
+        </div>
+
+        <div class="result-item">
+            <div class="result-label">
+                Likely Outcome
+            </div>
+
+            <div class="{outcome_class}">
+                {outcome_text}
+            </div>
+        </div>
+
+        <div class="result-item">
+            <div class="result-label">
+                Expected Test MAE
+            </div>
+
+            <div class="result-number">
+                ± {mae:.1f} grade points
+            </div>
+        </div>
+
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.progress(
+    min(max(grade / 20, 0.0), 1.0),
+    text=f"Grade: {grade:.1f} / 20"
+)
 
     if result["clipped"]:
         st.caption(
