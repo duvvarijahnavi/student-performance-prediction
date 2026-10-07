@@ -487,77 +487,21 @@ if submitted:
     grade = result["predicted_grade"]
     passed = grade >= PASS_MARK
 st.divider()
+st.subheader("Result")
 
-# ============================================================
-# RESPONSIVE PREDICTION RESULT
-# ============================================================
+left, right = st.columns(2)
+with left:
+    st.metric("Predicted final grade (G3)", f"{grade:.1f} / 20")
+with right:
+    st.metric("Likely outcome", "Pass ✅" if passed else "At risk ⚠️")
 
-outcome_text = "PASS ✅" if passed else "AT RISK ⚠️"
-outcome_class = "result-pass" if passed else "result-risk"
+st.progress(min(max(grade / 20, 0.0), 1.0))st.divider()
+st.subheader("Result")
 
-mae = meta["test_metrics"]["MAE"]
+left, right = st.columns(2)
+with left:
+    st.metric("Predicted final grade (G3)", f"{grade:.1f} / 20")
+with right:
+    st.metric("Likely outcome", "Pass ✅" if passed else "At risk ⚠️")
 
-st.markdown(
-    f"""
-    <div class="result-container">
-
-        <div class="result-heading">
-            🎓 Prediction Result
-        </div>
-
-        <div class="result-item">
-            <div class="result-label">
-                Predicted Final Grade (G3)
-            </div>
-
-            <div class="result-number">
-                {grade:.1f} / 20
-            </div>
-        </div>
-
-        <div class="result-item">
-            <div class="result-label">
-                Likely Outcome
-            </div>
-
-            <div class="{outcome_class}">
-                {outcome_text}
-            </div>
-        </div>
-
-        <div class="result-item">
-            <div class="result-label">
-                Expected Test MAE
-            </div>
-
-            <div class="result-number">
-                ± {mae:.1f} grade points
-            </div>
-        </div>
-
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-st.progress(
-    min(max(grade / 20, 0.0), 1.0),
-    text=f"Grade: {grade:.1f} / 20"
-)
-
-    if result["clipped"]:
-        st.caption(
-            f"Note: the model's raw output ({result['raw_prediction']}) was outside the "
-            f"0-20 grade scale and was capped to a valid grade."
-        )
-
-    for warning in result["warnings"]:
-        st.warning(warning, icon="⚠️")
-
-    with st.expander("What did I enter?"):
-        st.json(student)
-
-    st.caption(
-        f"Remember: this model's typical error on unseen students was about "
-        f"{meta['test_metrics']['MAE']:.1f} grade points. Use this as a rough guide, not a guarantee."
-    )
+st.progress(min(max(grade / 20, 0.0), 1.0))
