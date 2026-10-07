@@ -430,7 +430,10 @@ def render_field(col):
 # ----------------------------------------------------------------------
 # PAGE HEADER
 # ----------------------------------------------------------------------
-
+st.markdown(
+    '<div class="main-title">🎓 Student Performance Predictor</div>',
+    unsafe_allow_html=True
+)
 st.markdown(
     '<div class="subtitle">Machine Learning Based Student Performance Prediction</div>',
     unsafe_allow_html=True
