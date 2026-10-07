@@ -519,7 +519,6 @@ with st.form("student_form"):
                 student[col] = render_field(col)
 
     submitted = st.form_submit_button("Predict final grade", use_container_width=True)
-
 # ----------------------------------------------------------------------
 # HANDLE THE PREDICTION
 # ----------------------------------------------------------------------
@@ -532,13 +531,40 @@ if submitted:
 
     grade = result["predicted_grade"]
     passed = grade >= PASS_MARK
-st.divider()
-st.subheader("Result")
 
-left, right = st.columns(2)
-with left:
-    st.metric("Predicted final grade (G3)", f"{grade:.1f} / 20")
-with right:
-    st.metric("Likely outcome", "Pass ✅" if passed else "At risk ⚠️")
+    st.divider()
+    st.subheader("Result")
 
-st.progress(min(max(grade / 20, 0.0), 1.0))
+    left, right = st.columns(2)
+
+    with left:
+        st.metric(
+            "Predicted final grade (G3)",
+            f"{grade:.1f} / 20"
+        )
+
+    with right:
+        st.metric(
+            "Likely outcome",
+            "Pass ✅" if passed else "At risk ⚠️"
+        )
+
+    st.progress(min(max(grade / 20, 0.0), 1.0))
+
+    if result["clipped"]:
+        st.caption(
+            f"Note: the model's raw output ({result['raw_prediction']}) "
+            f"was outside the 0-20 grade scale and was capped to a valid grade."
+        )
+
+    for warning in result["warnings"]:
+        st.warning(warning, icon="⚠️")
+
+    with st.expander("What did I enter?"):
+        st.json(student)
+
+    st.caption(
+        f"Remember: this model's typical error on unseen students was about "
+        f"{meta['test_metrics']['MAE']:.1f} grade points. "
+        f"Use this as a rough guide, not a guarantee."
+    )
