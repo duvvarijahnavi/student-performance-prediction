@@ -237,7 +237,50 @@ st.markdown("""
 
     color: #b45309 !important;
 }
+/* ================================
+   RESULT METRIC VISIBILITY
+================================ */
 
+[data-testid="stMetric"] {
+    color: #1e293b !important;
+    min-width: 0 !important;
+}
+
+[data-testid="stMetricLabel"],
+[data-testid="stMetricLabel"] * {
+    color: #334155 !important;
+    visibility: visible !important;
+}
+
+[data-testid="stMetricValue"],
+[data-testid="stMetricValue"] * {
+    color: #1e293b !important;
+    visibility: visible !important;
+}
+
+@media (max-width: 768px) {
+
+    [data-testid="stMetric"] {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetricLabel"] * {
+        color: #334155 !important;
+        font-size: 14px !important;
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricValue"] * {
+        color: #1e293b !important;
+        font-size: 25px !important;
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+}
 
 /* ================================
    MOBILE RESPONSIVE
